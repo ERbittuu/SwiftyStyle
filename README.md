@@ -189,7 +189,7 @@ enum Direction {
 	case WEST
 }
 
-// Not Preferred in last swift version 
+// Not Preferred in latest swift version 
 enum Direction {
 	case North
 	case South
@@ -837,7 +837,7 @@ Check that source files begin with a non-whitespace character or blank line.
 ```
 ```swift
 1 import Foundation
-1 import Foundation
+2 import UIKit
 ```
 
 *Not Preferred*
