@@ -23,6 +23,16 @@ _ = `self` // Learning swift style guide.
 * [Comment Whitespace](#comment-whitespace) 
 * [Function Whitespace](#function-whitespace) 
 
+### Important **8 Rules**
+* [Indentation style](#indentation-style)
+* [Redundant Parentheses](#redundant-parentheses)
+* [forced-type-cast](#forced-type-cast) Flag force casts
+* [multiple-imports](#multiple-imports) One import per line
+* [terminating-semicolon](#terminating-semicolon) Flag semicolon terminated statements
+* [todo-syntax](#todo-syntax) Verify TODO syntax
+* [redundant-optional-binding](#redundant-optional-binding) Flag redundant `let`/`var` bindings in optional binding lists
+* [trailing-closure](#trailing-closure) Closures that are the last argument of a function should be passed using 'trailing closure' syntax.
+
 *** 
 
 ## Pascal Case
@@ -1052,6 +1062,889 @@ struct SomeStruct {
 func function5() {
   // something goes here
 }
+```
+
+## Indentation style
+Definitions of
+[`init`](#initializers), [`class`](#classes), [`enum`](#enums), [`struct`](#structs), [`function`](#functions), [`protocol`](#protocols), [`extension`](#extensions), [`closure`](#closures), [Getters and Setters](#getters-and-setters) (`set`, `get`), [Control flow constructs](#control-flow-constructs) (`if`, `else if`, `else`, `switch`, `for`, `while`, `repeat-while`) 
+
+Opening curly braces go on the same line as the corresponding statement, separated by a space. and closing brace at the end is on the same indentation level as the header of the function at a line of its own. 
+
+Examples:
+#### Initializers
+
+*Preferred*
+
+```swift
+init(name: String) {
+   self.name = name
+}
+```
+
+*Not Preferred*
+
+```swift
+init(name: String) 
+{
+   self.name = name
+}
+```
+
+#### Classes
+
+*Preferred*
+
+```swift
+class OneClass {
+}
+
+class OneClass: SuperClass {
+}
+```
+
+*Not Preferred*
+
+```swift
+class OneClass
+{
+}
+
+class OneClass: SuperClass{
+}
+```
+
+#### Structs
+
+*Preferred*
+
+```swift
+struct OneStruct {
+}
+
+struct OneStruct : SuperStruct {
+}
+```
+
+*Not Preferred*
+
+```swift
+struct OneStruct
+{
+}
+
+struct OneStruct : SuperStruct  {
+}
+```
+
+#### Functions
+
+*Preferred*
+
+```swift
+func callMe() {
+}
+
+func isOk () -> Bool {
+}
+```
+
+*Not Preferred*
+
+```swift
+func callMe()
+{
+}
+
+func isOk () -> Bool
+{
+}
+```
+
+#### Control flow constructs
+
+- if, else if, and else statement
+
+*Preferred*
+
+```swift
+if i > 2 {
+
+} else if i < 10 {
+
+} else {
+
+}
+```
+
+*Not Preferred*
+
+```swift
+if i > 2
+{
+
+}
+else if i < 10
+{
+}
+else
+{
+}
+```
+
+- switch statement
+
+*Preferred*
+
+```swift
+switch character {
+    case "a", "e", "i", "o", "u": 
+        continue
+    default: 
+        print(character)
+}
+```
+
+*Not Preferred*
+
+```swift
+switch character 
+{
+    case "a", "e", "i", "o", "u": 
+        continue
+    default: 
+        print(character)
+}
+```
+
+- for loop
+
+*Preferred*
+
+```swift
+for name in names {
+
+}
+```
+
+*Not Preferred*
+
+```swift
+for name in names 
+{
+
+}
+```
+
+- while loop
+
+*Preferred*
+
+```swift
+while true {
+
+}
+```
+
+*Not Preferred*
+
+```swift
+while true
+{
+
+}
+```
+
+- repeat-while loop
+
+*Preferred*
+
+```swift
+repeat {
+
+} while true
+```
+
+*Not Preferred*
+
+```swift
+repeat
+{
+
+} while true
+```
+
+#### Protocols
+
+*Preferred*
+
+```swift
+protocol XProtocol {
+
+}
+
+protocol XProtocol : YProtocol {
+
+}
+```
+
+*Not Preferred*
+
+```swift
+protocol XProtocol
+{
+
+}
+
+protocol XProtocol : YProtocol
+{
+}
+
+```
+
+#### Enums
+
+*Preferred*
+
+```swift
+enum SomeEnum {
+    case n, e, w, s
+}
+
+enum SomeEnum {
+    case n
+    case e
+    case w
+    case s
+}
+
+enum SomeEnum: Int {
+    case n, e, w = 5, s
+}
+```
+
+*Not Preferred*
+
+```swift
+enum SomeEnum
+{
+    case n, e, w, s
+}
+
+enum SomeEnum
+{
+    case n
+    case e
+    case w
+    case s
+}
+
+enum SomeEnum: Int
+{
+    case n, e, w = 5, s
+}
+```
+
+#### Closures
+
+*Preferred*
+
+```swift
+func closerFunc () -> () {
+// closure
+}
+```
+
+*Not Preferred*
+
+```swift
+func closerFunc () -> ()
+{
+// closure
+}
+```
+
+#### Setters and Getters
+
+- set
+
+*Preferred*
+
+```swift
+var age : Double {
+    set {
+        oldValue = newValue / 2
+    }
+}
+```
+
+*Not Preferred*
+
+```swift
+var age : Double 
+{
+    set 
+    {
+        oldValue = newValue / 2
+    }
+}
+```
+
+- get
+
+*Preferred*
+
+```swift
+var age : Double {
+    get {
+        oldValue = newValue / 2
+    }
+}
+```
+
+*Not Preferred*
+
+```swift
+var age : Double 
+{
+    get 
+    {
+        oldValue = newValue / 2
+    }
+}
+```
+
+#### Extensions
+
+*Preferred*
+
+```swift
+extension newExtension {
+}
+```
+
+*Not Preferred*
+
+```swift
+extension newExtension
+{
+}
+```
+
+***
+
+## [redundant-parentheses]
+[Control flow constructs](#control-flow-constructs) (`if`, `else if`, `switch`, `for`, `while`, `repeat-while`, and `guard` statements), [Exception handling constructs](#exception-handling-constructs) (`throw`, and `do/catch` statements), and [Initializers](#initializers) (`array`, `dictionary`, `initializer patterns`) should not be enclosed in parentheses.
+
+Additionally, method calls with no parameters and a trailing closure should not have empty parentheses following the method name.
+
+#### Control flow constructs
+
+- if, else if statement
+
+*Preferred*
+
+```swift
+if i < 2 {
+
+} else if 10 > i {
+}
+```
+
+*Not Preferred*
+
+```swift
+if (i < 2) {
+
+} else if (10 > i) {
+}
+```
+
+- switch statement
+
+*Preferred*
+
+```swift
+switch character {
+    case "a", "e", "i", "o", "u": 
+        continue
+    default: 
+        print(character)
+}
+```
+
+*Not Preferred*
+
+```swift
+switch (character) {
+    case "a", "e", "i", "o", "u": 
+        continue
+    default: 
+        print(character)
+}
+```
+
+- for loop
+
+*Preferred*
+
+```swift
+for name in names {
+
+}
+```
+
+*Not Preferred*
+
+```swift
+for (name in names) {
+
+}
+```
+
+- while loop
+
+*Preferred*
+
+```swift
+while true {
+
+}
+```
+
+*Not Preferred*
+
+```swift
+while (true) {
+
+}
+```
+
+- repeat-while loop
+
+*Preferred*
+
+```swift
+repeat {
+
+} while true
+```
+
+*Not Preferred*
+
+```swift
+repeat {
+
+} while (true)
+```
+
+- guard clause
+
+*Preferred*
+
+```swift
+guard true else {   }
+```
+
+*Not Preferred*
+
+```swift
+guard (true) else {   }
+```
+
+#### Exception handling constructs
+- do/catch statement
+
+*Preferred*
+
+```swift
+do  {
+
+} catch SomeException {
+
+}
+```
+
+*Not Preferred*
+
+```swift
+do  {
+
+} catch (SomeException) {
+
+}
+```
+
+- throw statement
+
+*Preferred*
+
+```swift
+throw SomeException
+```
+
+*Not Preferred*
+
+```swift
+throw (SomeException)
+```
+
+#### Initializers
+
+- array items
+
+*Preferred*
+
+```swift
+var list: [String] = ["Hello", "Hi"]
+```
+
+*Not Preferred*
+
+```swift
+var list: [String] = [("Hello"), ("Hi")]
+```
+
+- dictionary items
+
+*Preferred*
+
+```swift
+var name: [String: String] = ["first": "Utsav", "last": "Patel"]
+```
+
+*Not Preferred*
+
+```swift
+var name: [String: String] = [("first"): ("Utsav"), ("last"): ("Patel")]
+```
+
+- initializer patterns
+
+*Preferred*
+
+```swift
+var x: Int = 2
+var y: String = "Hi"
+var x = 2
+```
+
+*Not Preferred*
+
+```swift
+var x: Int = (2)
+var y: String = ("Hi")
+var x = (2)
+```
+
+#### Method calls
+
+*Preferred*
+
+```swift
+items.map {
+  item in item.transform()
+}
+```
+
+*Not Preferred*
+
+```swift
+items.map() {
+  item in item.transform()
+}
+```
+
+*** 
+
+## Forced Type Cast
+Avoid using the forced form of the type cast operator (`as!`) 
+ 
+Use The conditional form of the type cast operator (`as?`) is safer and should be used when possible.
+
+*Preferred*
+
+```swift
+if let movie = item as? Movie {
+    print("Movie: '\(movie.name)', dir. \(movie.director)")
+}
+```
+
+*Not Preferred*
+
+```swift
+let movie = item as! Movie
+print("Movie: '\(movie.name)', dir. \(movie.director)")
+```
+
+*** 
+
+## Multiple Imports
+Multiple `import` statements should not be defined on a single line.
+
+*Preferred*
+
+```swift
+import Foundation
+import Cocoa
+```
+
+*Not Preferred*
+
+```swift
+import Foundation; import Cocoa
+```
+
+*** 
+
+## Terminating Semicolon
+
+Swift does not require a semicolon after each statement in your code unless you wish to combine multiple statements on a single line. 
+
+Do not write multiple statements on a single line separated with semicolons if not required.
+
+#### Imports
+
+*Preferred*
+
+```swift
+import Foundation
+```
+
+*Not Preferred*
+
+```swift
+import Foundation;
+```
+
+
+#### Enums and enum cases
+
+*Preferred*
+
+```swift
+enum CompassPoint {
+	case north
+	case south
+	case east
+	case west
+}
+
+enum CompassPoint {
+	case north, south, east, west
+}
+```
+
+
+*Not Preferred*
+
+```swift
+enum CompassPoint {
+	case north;
+	case south;
+	case east;
+	case west;
+};
+
+enum CompassPoint {
+	case north, south, east, west;
+};
+```
+
+#### Protocols
+
+*Preferred*
+
+```swift
+protocol OneProtocol {
+	var name: String { get }
+	func isProblem() -> Bool
+	func callMe(number: PhoneNumber)
+}
+```
+
+*Not Preferred*
+
+```swift
+protocol SomeProtocol {
+	var name: String { get };
+	func isProblem() -> Bool;
+	func callMe(number: PhoneNumber);
+};
+```
+
+#### Extensions
+
+*Preferred*
+
+```swift
+extension NewType {
+
+}
+```
+
+*Not Preferred*
+
+```swift
+extension NewType {
+
+};
+```
+
+#### Structs
+
+*Preferred*
+
+```swift
+struct NewStruct {
+    var x: String // variables
+}
+```
+
+*Not Preferred*
+
+```swift
+struct NewStruct {
+    var x: String // variables
+};
+```
+
+#### Classes
+
+*Preferred*
+
+```swift
+class NewClass {
+	let b = 2 // constants
+}
+```
+
+*Not Preferred*
+
+```swift
+class NewClass {
+	let b = 2 // constants
+};
+```
+
+#### Loops
+
+*Preferred*
+
+```swift
+// while loop
+while true {
+
+}
+
+// for loop
+for name in names {
+}
+
+// repeat while
+repeat {
+
+} while true
+```
+
+*Not Preferred*
+
+```swift
+// while loop
+while true {
+
+};
+
+// for loop
+for name in names {
+};
+
+// repeat while
+repeat {
+
+} while true;
+```
+
+***
+
+## Todo Syntax
+TODO comments should be defined separately using non-nested single line comments. 
+
+They should adhere to the `<TODO: description>` or `<TODO(developer-name): description>` syntax. Empty TODO comments will be flagged.
+
+*Preferred*
+
+```swift
+// TODO: add todo comments
+// TODO(dev-name): add todo comments
+```
+
+*Not Preferred*
+
+```swift
+// TODO:
+
+/// TODO: Documentation comments should not have TODOs
+
+//// TODO: Nested comments should not have TODOs
+
+// //TODO: Nested comments should not have TODOs
+
+// TODO: Nested comments should not have TODOs // some comment
+
+//// TODO: Nested comments should not have TODOs
+```
+
+*** 
+
+## Redundant Optional Binding
+
+Optional binding lists should not have consecutive `var`/`let` bindings.  
+
+All constants must be preceded by at most one `let` binding.  
+
+All variables must be preceded by only one `var` binding.
+
+*Preferred*
+
+```swift
+if var a = a, b = b, c = c, c != 0 {
+    print("(a + b) / c = \((a + b) / c)")     // (a + b) / c = 5
+}
+
+if let a = a, b = b, var c = c, c != 0 {
+    print("(a + b) / c = \((a + b) / c)")     // (a + b) / c = 5
+}
+```
+
+*Not Preferred*
+
+```swift
+if var a = a, var b = b, var c = c, c != 0 {
+    print("(a + b) / c = \((a + b) / c)")     // (a + b) / c = 5
+}
+
+if let a = a, let b = b, var c = c, c != 0 {
+    print("(a + b) / c = \((a + b) / c)")     // (a + b) / c = 5
+}
+```
+
+*** 
+
+
+## Trailing Closure
+
+Closures that are the last argument of a function should be passed into the function using [trailing closure](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-ID94) syntax.
+
+*Preferred*
+
+```swift
+reversed = names.sort { s1, s2 in return s1 > s2 }
+```
+
+*Not Preferred*
+
+```swift
+reversed = names.sort({ s1, s2 in return s1 > s2 })
 ```
 
 # Contributing to SwiftyStyle
