@@ -26,12 +26,12 @@ _ = `self` // Learning swift style guide.
 ### Important **8 Rules**
 * [Indentation style](#indentation-style)
 * [Redundant Parentheses](#redundant-parentheses)
-* [forced-type-cast](#forced-type-cast) Flag force casts
-* [multiple-imports](#multiple-imports) One import per line
-* [terminating-semicolon](#terminating-semicolon) Flag semicolon terminated statements
-* [todo-syntax](#todo-syntax) Verify TODO syntax
-* [redundant-optional-binding](#redundant-optional-binding) Flag redundant `let`/`var` bindings in optional binding lists
-* [trailing-closure](#trailing-closure) Closures that are the last argument of a function should be passed using 'trailing closure' syntax.
+* [Force Casts](#forced-type-cast)
+* [Multiple Imports](#multiple-imports)
+* [Terminating Semicolon](#terminating-semicolon)
+* [TODO Syntax](#todo-syntax)
+* [Redundant Optional Binding](#redundant-optional-binding)
+* [Trailing Closure](#trailing-closure)
 
 *** 
 
