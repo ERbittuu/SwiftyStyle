@@ -1432,7 +1432,7 @@ extension newExtension
 
 ***
 
-## [redundant-parentheses]
+## redundant-parentheses
 [Control flow constructs](#control-flow-constructs) (`if`, `else if`, `switch`, `for`, `while`, `repeat-while`, and `guard` statements), [Exception handling constructs](#exception-handling-constructs) (`throw`, and `do/catch` statements), and [Initializers](#initializers) (`array`, `dictionary`, `initializer patterns`) should not be enclosed in parentheses.
 
 Additionally, method calls with no parameters and a trailing closure should not have empty parentheses following the method name.
